@@ -3,7 +3,7 @@ name: Bug report
 about: Create a report to help us improve
 title: ''
 labels: "Bug\U0001F41E"
-assignees: whqtker, seobin-moon, junghyun13, shjk0531, suuny0321
+assignees: junghyun13, seobin-moon, shjk0531, suuny0321, whqtker
 
 ---
 
