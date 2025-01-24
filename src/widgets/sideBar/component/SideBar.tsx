@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { logoPath } from '../../../shared';
 
 import '../ui/SideBarStyle.css';
 
@@ -9,9 +10,12 @@ const Sidebar: React.FC = () => {
                 <div className="bg-dark col-auto col-md-1 min-vh-100 d-flex justify-content-between flex-column">
                     <div>
                         <a className="text-decoration-none text-white d-none d-sm-inline d-flex align-itemcenter">
-                            <span className="ms-1 fs-4 d-none d-sm-inline">
-                                Commars
-                            </span>
+                            <img
+                                src={logoPath}
+                                width="50"
+                                height="50"
+                                className="d-inline-block align-top"
+                            ></img>
                         </a>
                         <hr className="text-secondary d-none d-sm-block" />
                         <ul className="nav nav-pills flex-column mt-3 mt-sm-0">
