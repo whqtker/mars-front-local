@@ -21,9 +21,9 @@ const App: React.FC = () => {
     // console.log(import.meta.env.VITE_CORE_API_BASE_URL);
 
     return (
-        <Router>
-            <NavigationBar />
-            <main>
+        <div className="custom-app-container">
+            <Router>
+                <NavigationBar />
                 <Routes>
                     <Route
                         path={pathItemMap['home'].path}
@@ -54,8 +54,8 @@ const App: React.FC = () => {
                         element={<Recommendation />}
                     />
                 </Routes>
-            </main>
-        </Router>
+            </Router>
+        </div>
     );
 };
 
