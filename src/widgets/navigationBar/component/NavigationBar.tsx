@@ -1,17 +1,15 @@
 import { useState } from 'react';
-import { logoPath } from '../../../shared';
-import { userPath } from '../../../shared';
+import { logoPath, userPath, pathItemMap } from '../../../shared';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import '../ui/NavigationBar.module.css';
-import { pathItemMap } from '../../../shared/items/pathItems';
 
 const NavigationBar: React.FC = () => {
     // 로그인 상태와 사용자 이름 관리
-    const [isLoggedIn, setIsLoggedIn] = useState(false); // 로그인 여부
-    const [userName, setUserName] = useState(''); // 로그인된 사용자 이름
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userName, setUserName] = useState('');
 
     const handleLogin = () => {
         setIsLoggedIn(true);
@@ -54,6 +52,9 @@ const NavigationBar: React.FC = () => {
                         <Nav.Link href={pathItemMap['ranking'].path}>
                             {pathItemMap['ranking'].label}
                         </Nav.Link>
+                        <Nav.Link href={pathItemMap['community'].path}>
+                            {pathItemMap['community'].label}
+                        </Nav.Link>
                     </Nav>
                     <Nav>
                         {isLoggedIn ? (
@@ -86,8 +87,8 @@ const NavigationBar: React.FC = () => {
                         ) : (
                             <Nav className="ms-auto">
                                 <a onClick={handleLogin}>로그인</a>
-                                <Nav.Link href={pathItemMap['logIn'].path}>
-                                    {pathItemMap['logIn'].label}
+                                <Nav.Link href={pathItemMap['login'].path}>
+                                    {pathItemMap['login'].label}
                                 </Nav.Link>
                                 <Nav.Link href={pathItemMap['signUp'].path}>
                                     {pathItemMap['signUp'].label}

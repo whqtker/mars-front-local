@@ -6,6 +6,6 @@ export const pathItemMap: Record<string, PathType> = {
     ranking: { path: '/ranking', label: '리뷰어 랭킹' },
     community: { path: '/community', label: '커뮤니티' },
     myPage: { path: '/mypage', label: '마이페이지' },
-    logIn: { path: '/login', label: '로그인' },
+    login: { path: '/login', label: '로그인' },
     signUp: { path: '/signup', label: '회원가입' },
 };

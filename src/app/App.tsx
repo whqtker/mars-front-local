@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { NavigationBar } from '../widgets/index';
 import '../index';
 import './ui/App.css';
-import { pathItemMap } from '../shared/items/pathItems';
+import { pathItemMap } from '../shared/pathItems/pathItems';
+import { MainPage, MyPage, SignUpPage, LoginPage } from '../pages';
 
 const App: React.FC = () => {
     const Home: React.FC = () => <div>홈 페이지</div>;
@@ -11,7 +12,7 @@ const App: React.FC = () => {
     const Login: React.FC = () => <div>로그인 페이지</div>;
     const SignUp: React.FC = () => <div>회원가입 페이지</div>;
     const Community: React.FC = () => <div>커뮤니티 페이지</div>;
-    const MyPage: React.FC = () => <div>마이 페이지</div>;
+    // const MyPage: React.FC = () => <div>마이 페이지</div>;
     const Recommendation: React.FC = () => <div>오늘 뭐 먹지 페이지</div>;
     // fetch(import.meta.env.VITE_CORE_FRONT_BASE_URL + 'api/v1/test')
     //     .then((res) => res.json())
@@ -25,18 +26,21 @@ const App: React.FC = () => {
             <NavigationBar />
             <main>
                 <Routes>
-                    <Route path={pathItemMap['home'].path} element={<Home />} />
+                    <Route
+                        path={pathItemMap['home'].path}
+                        element={<MainPage />}
+                    />
                     <Route
                         path={pathItemMap['ranking'].path}
                         element={<Ranking />}
                     />
                     <Route
-                        path={pathItemMap['logIn'].path}
-                        element={<Login />}
+                        path={pathItemMap['login'].path}
+                        element={<LoginPage />}
                     />
                     <Route
                         path={pathItemMap['signUp'].path}
-                        element={<SignUp />}
+                        element={<SignUpPage />}
                     />
                     <Route
                         path={pathItemMap['community'].path}
