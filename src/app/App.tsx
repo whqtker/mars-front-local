@@ -7,7 +7,6 @@ import { pathItemMap } from '../shared/pathItems/pathItems';
 import { MainPage, MyPage, SignUpPage, LoginPage } from '../pages';
 
 const App: React.FC = () => {
-    const Home: React.FC = () => <div>홈 페이지</div>;
     const Ranking: React.FC = () => <div>리뷰어 순위</div>;
     const Login: React.FC = () => <div>로그인 페이지</div>;
     const SignUp: React.FC = () => <div>회원가입 페이지</div>;
