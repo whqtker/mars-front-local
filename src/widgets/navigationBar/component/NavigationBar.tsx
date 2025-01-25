@@ -1,9 +1,5 @@
 import { useState } from 'react';
 import { logoPath, userPath, pathItemMap } from '../../../shared';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import '../ui/NavigationBarStyle.css';
 
 const NavigationBar: React.FC = () => {
@@ -31,78 +27,77 @@ const NavigationBar: React.FC = () => {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid">
-                <a className="navbar-brand" href={pathItemMap['home'].path}>
-                    <img
-                        src={logoPath}
-                        alt="Commars"
-                        style={{ width: '30px', marginRight: '10px' }}
-                    />
-                    Commars
-                </a>
+        // 네비게이션 바
+        <div className="navbar-container bg-gray-800 text-white">
+            <nav className="navbar flex justify-between items-center p-4">
+                <div className="flex items-center">
+                    <div className="navbar-logo flex items-center">
+                        <a
+                            href={pathItemMap['home'].path}
+                            className="flex items-center"
+                        >
+                            <img
+                                src={logoPath}
+                                alt="Commars"
+                                className="w-8 mr-2"
+                            />
+                            Commars
+                        </a>
+                    </div>
 
-                {/* 메뉴 */}
-                <button
-                    className="navbar-toggler"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    data-bs-target="#navbarNav"
-                    aria-controls="navbarNav"
-                    aria-expanded="false"
-                    aria-label="Toggle navigation"
-                >
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav me-auto">
-                        <li className="nav-item">
-                            <a
-                                className="nav-link"
-                                href={pathItemMap['recommend'].path}
-                            >
-                                {pathItemMap['recommend'].label}
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a
-                                className="nav-link"
-                                href={pathItemMap['ranking'].path}
-                            >
-                                {pathItemMap['ranking'].label}
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a
-                                className="nav-link"
-                                href={pathItemMap['community'].path}
-                            >
-                                {pathItemMap['community'].label}
-                            </a>
-                        </li>
-                    </ul>
-
-                    <ul className="navbar-nav">
-                        <li className="nav-item">
-                            <a
-                                className="nav-link"
-                                href={pathItemMap['login'].path}
-                            >
-                                {pathItemMap['login'].label}
-                            </a>
-                        </li>
-                        <li className="nav-item">
-                            <a
-                                className="nav-link"
-                                href={pathItemMap['signUp'].path}
-                            >
-                                {pathItemMap['signUp'].label}
-                            </a>
-                        </li>
-                    </ul>
+                    <div className="navbar-menu ml-4">
+                        <ul className="flex space-x-4">
+                            <li>
+                                <a
+                                    href={pathItemMap['recommend'].path}
+                                    className="hover:text-gray-400"
+                                >
+                                    {pathItemMap['recommend'].label}
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href={pathItemMap['ranking'].path}
+                                    className="hover:text-gray-400"
+                                >
+                                    {pathItemMap['ranking'].label}
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href={pathItemMap['community'].path}
+                                    className="hover:text-gray-400"
+                                >
+                                    {pathItemMap['community'].label}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
-        </nav>
+
+                <div className="navbar-user flex items-center">
+                    {isLoggedIn ? (
+                        <div className="navbar-user-info flex items-center">
+                            <img
+                                src={userPath}
+                                alt="user"
+                                className="w-5 mr-2"
+                            />
+                            <span>{formatUserName(userName)}</span>
+                        </div>
+                    ) : (
+                        <div className="navbar-auth flex space-x-4">
+                            <a href="/login" className="hover:text-gray-400">
+                                로그인
+                            </a>
+                            <a href="/signup" className="hover:text-gray-400">
+                                회원가입
+                            </a>
+                        </div>
+                    )}
+                </div>
+            </nav>
+        </div>
     );
 };
 export default NavigationBar;

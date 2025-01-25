@@ -1,31 +1,28 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+@import 'tailwindcss';
 
 html,
-body {
+body,
+:root {
     height: 100%;
-    /* overflow: hidden;  */
-}
 
-.custom-navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: 60px;
-    background-color: #fff;
-    z-index: 1000;
-}
-
-.custom-main-content {
-    padding-top: 60px; /* 네비게이션 바 높이만큼 보정 */
-    height: 100%;
-    overflow-y: auto; /* 콘텐츠 영역만 스크롤 가능 */
 }
 
 .custom-app-container {
-    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.custom-nav-container {
+    background-color: #f1f1f1;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.custom-main-container {
+    flex-grow: 1;
+    background-color: #eaeaea;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

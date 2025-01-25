@@ -4,73 +4,34 @@ import '../ui/SideBarStyle.css';
 
 const Sidebar: React.FC = () => {
     return (
-        <div className="bg-dark col-1 min-vh-100 d-flex justify-content-between flex-column">
-            <div>
-                <a className="text-decoration-none text-white d-none d-sm-inline d-flex align-items-center">
-                    <img
-                        src={logoPath}
-                        width="50"
-                        height="50"
-                        className="d-inline-block align-top"
-                        alt="Logo"
-                    />
-                </a>
-                <hr className="text-secondary d-none d-sm-block" />
-                <ul className="nav nav-pills flex-column mt-3 mt-sm-0">
-                    <li className="nav-item text-white fs-4 my-1 py-2 py-sm-0">
-                        <a
-                            href="#"
-                            className="nav-link text-white fs-5"
-                            aria-current="page"
-                        >
-                            <span className="ms-0 d-none d-sm-inline">
-                                검색
-                            </span>
-                        </a>
+        <div className="bg-gray-800 text-white flex flex-col items-center">
+            <a href="#home" className="flex flex-col items-center p-4">
+                <img
+                    src={logoPath}
+                    width="50"
+                    height="50"
+                    className="inline-block"
+                    alt="Logo"
+                />
+                <span className="mt-2 text-xl font-bold">Commars</span>
+            </a>
+            {/* 다른 사이드바 항목들 추가 */}
+            <div className="menu flex flex-col items-center mt-4 space-y-4">
+                <ul className="w-full">
+                    <li className="text-center py-2">
+                        <a href="#search">검색</a>
                     </li>
-                    <li className="nav-item text-white fs-4 my-1 py-2 py-sm-0">
-                        <a
-                            href="#"
-                            className="nav-link text-white fs-5"
-                            aria-current="page"
-                        >
-                            <span className="ms-0 d-none d-sm-inline">찜</span>
-                        </a>
+                    <li className="text-center py-2">
+                        <a href="#likes">찜</a>
                     </li>
-                    <li className="nav-item text-white fs-4 my-1 py-2 py-sm-0">
-                        <a
-                            href="#"
-                            className="nav-link text-white fs-5"
-                            aria-current="page"
-                        >
-                            <span className="ms-0 d-none d-sm-inline">
-                                길찾기
-                            </span>
-                        </a>
+                    <li className="text-center py-2">
+                        <a href="#pathFinder">길찾기</a>
                     </li>
-                    <li className="nav-item text-white fs-4 my-1 py-2 py-sm-0">
-                        <a
-                            href="#"
-                            className="nav-link text-white fs-5"
-                            aria-current="page"
-                        >
-                            <span className="ms-0 d-none d-sm-inline">
-                                인기키워드
-                            </span>
-                        </a>
-                    </li>
-                    <li className="nav-item text-white fs-4 my-1 py-2 py-sm-0">
-                        <a
-                            href="#"
-                            className="nav-link text-white fs-5"
-                            aria-current="page"
-                        >
-                            <span className="ms-1 d-none d-sm-inline">찜</span>
-                        </a>
+                    <li className="text-center py-2">
+                        <a href="#popularKeywords">인기키워드</a>
                     </li>
                 </ul>
             </div>
-            <div></div>
         </div>
     );
 };
