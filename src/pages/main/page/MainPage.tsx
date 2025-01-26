@@ -4,12 +4,12 @@ import { SideBar, SideContainer } from '../../../widgets';
 
 const MainPage: React.FC = () => {
     return (
-        <div className="main-page-container">
-            <div className="main-content-container flex">
+        <div className="main-page-container w-full h-full">
+            <div className="main-content-container flex h-full">
                 <div className="side-bar-container">
                     <SideBar />
                 </div>
-                <div className="main-content">
+                <div className="mt-4 ml-4 mb-4">
                     <SideContainer />
                 </div>
                 <div className="space-container"></div>
