@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../ui/SideContainerStyles.css';
 import { SearchBox } from '../../index';
 import CardComponent from '../../sideCard/SideCard';
 
-const SideContainer: React.FC = () => {
+interface SideContainerProps {
+    selectedMenu: string;
+}
+
+const SideContainer: React.FC<SideContainerProps> = ({ selectedMenu }) => {
     const cards = [
         {
             title: '카페&펍 연무장 던던 동대문점',
@@ -21,11 +25,24 @@ const SideContainer: React.FC = () => {
         },
     ];
 
+    const renderContent = () => {
+        switch (selectedMenu) {
+            case 'search':
+                return <SearchBox />;
+            case 'likes':
+                return <div>찜한 목록</div>;
+            case 'pathFinder':
+                return <div>길찾기</div>;
+            case 'popularKeywords':
+                return <div>인기키워드</div>;
+            default:
+                return <SearchBox />;
+        }
+    };
+
     return (
         <div className="side-container col-3 flex flex-col items-center bg-gray-200 p-4 border border-gray-300 h-full rounded-lg shadow-lg">
-            <SearchBox />
-            
-            {/* 식당 간단 정보 리스트 */}
+            {renderContent()}
             <h1 className="text-xl font-bold mt-4">식당 리스트</h1>
             <div className="card-container">
                 {cards.map((card, index) => (
