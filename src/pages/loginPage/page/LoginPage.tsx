@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { logoPath, GoogleLoginButton } from "../../../shared";
+import { logoPath } from "../../../shared";
 import "../ui/loginPageStyle.css";
+import { GoogleLoginButton } from "../../../features";
 
 function LoginPage() {
   const navigate = useNavigate();
