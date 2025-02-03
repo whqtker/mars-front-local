@@ -1,0 +1,70 @@
+/* 수정 폼 스타일 */
+.edit-post {
+    position: fixed;
+    top: 100px; /* 네비게이션 바 아래 */
+    left: 500px; /* 오른쪽 슬라이드 패널 옆 */
+    width: 1000px; /* 상세 패널 너비 */
+    height: calc(100vh - 100px); /* 화면 높이에서 네비게이션 바 제외 */
+    margin-top: 30px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .edit-post form {
+    width: 60%;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .edit-post h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .edit-post form div {
+    margin-bottom: 20px;
+  }
+  
+  .edit-post input,
+  .edit-post textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border 0.3s;
+  }
+  
+  .edit-post input:focus,
+  .edit-post textarea:focus {
+    border-color: #007bff;
+    outline: none;
+  }
+  
+  .edit-post textarea {
+    height: 150px;
+    resize: vertical;
+  }
+  
+  .edit-post button {
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-post button:hover {
+    background-color: #0056b3;
+  }
+  
+  .edit-post button:focus {
+    outline: none;
+  }
+  

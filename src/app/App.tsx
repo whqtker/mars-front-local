@@ -4,17 +4,19 @@ import { NavigationBar } from '../widgets/index';
 import '../index';
 import './ui/App.css';
 import { pathItemMap } from '../shared/pathItems/pathItems';
-import { MainPage, MyPage, SignUpPage, LoginPage } from '../pages';
+import {
+    MainPage,
+    MyPage,
+    SignUpPage,
+    LoginPage,
+    RankingPage,
+    BoardList,
+    TodayRecommand,
+} from '../pages';
 import { store } from './Store';
 import { Provider } from 'react-redux';
 
 const App: React.FC = () => {
-    const Ranking: React.FC = () => <div>리뷰어 순위</div>;
-    const Login: React.FC = () => <div>로그인 페이지</div>;
-    const SignUp: React.FC = () => <div>회원가입 페이지</div>;
-    const Community: React.FC = () => <div>커뮤니티 페이지</div>;
-    const Recommendation: React.FC = () => <div>오늘 뭐 먹지 페이지</div>;
-
     return (
         <React.StrictMode>
             <Provider store={store}>
@@ -32,7 +34,7 @@ const App: React.FC = () => {
                                     />
                                     <Route
                                         path={pathItemMap['ranking'].path}
-                                        element={<Ranking />}
+                                        element={<RankingPage />}
                                     />
                                     <Route
                                         path={pathItemMap['login'].path}
@@ -44,7 +46,7 @@ const App: React.FC = () => {
                                     />
                                     <Route
                                         path={pathItemMap['community'].path}
-                                        element={<Community />}
+                                        element={<BoardList />}
                                     />
                                     <Route
                                         path={pathItemMap['myPage'].path}
@@ -52,7 +54,7 @@ const App: React.FC = () => {
                                     />
                                     <Route
                                         path="/recommendation"
-                                        element={<Recommendation />}
+                                        element={<TodayRecommand />}
                                     />
                                 </Routes>
                             </div>
