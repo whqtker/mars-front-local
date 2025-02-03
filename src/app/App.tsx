@@ -13,7 +13,7 @@ import {
     BoardList,
     TodayRecommand,
 } from '../pages';
-import { store } from './Store';
+import { store } from '../shared/store/Store';
 import { Provider } from 'react-redux';
 
 const App: React.FC = () => {
