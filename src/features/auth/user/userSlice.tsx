@@ -8,6 +8,11 @@ interface UserState {
     isLoggedIn: boolean;
 }
 
+interface LoginPayload {
+    user: UserState;
+    accessToken: string;
+}
+
 const initialState: UserState = {
     id: '',
     name: '',
@@ -24,13 +29,18 @@ const userSlice = createSlice({
     name: 'user',
     initialState: initialUserState,
     reducers: {
-        login: (state, action: PayloadAction<UserState>) => {
-            const userData = action.payload;
-            localStorage.setItem('user', JSON.stringify(userData)); // 유저 정보를 localStorage에 저장
-            return { ...userData, isLoggedIn: true };
+        login: (state, action: PayloadAction<LoginPayload>) => {
+            const { user, accessToken } = action.payload;
+            console.log('로그인 정보:', user, accessToken);
+
+            localStorage.setItem('user', JSON.stringify(user));
+            localStorage.setItem('accessToken', accessToken);
+            return { ...user, isLoggedIn: true };
         },
         logout: () => {
-            localStorage.removeItem('user'); // 로그아웃 시 localStorage 초기화
+            // 로그아웃 시 localStorage 초기화
+            localStorage.removeItem('user');
+            localStorage.removeItem('accessToken');
             return initialState;
         },
     },

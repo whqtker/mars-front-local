@@ -1,16 +1,14 @@
-import { act, useState } from 'react';
-import { logoPath, userPath, pathItemMap } from '../../../shared';
+import { logoPath, pathItemMap } from '../../../shared';
 import '../ui/NavigationBarStyle.css';
 import { RootState } from '../../../shared';
 import { useSelector, useDispatch } from 'react-redux';
-import { login, logout } from '../../../features';
+import { logout } from '../../../features';
 import { Dropdown } from '../../../shared';
 import { useNavigate } from 'react-router-dom';
 
 const NavigationBar: React.FC = () => {
     const dispatch = useDispatch();
     const user = useSelector((state: RootState) => state.user);
-    const [dropdownVisible, setDropdownVisible] = useState(false);
     const navigate = useNavigate();
 
     const handleLogout = () => {

@@ -8,12 +8,13 @@ const GoogleLoginButton = () => {
     const dispatch = useDispatch();
 
     const handleLogin = async (
+        accessToken: string,
         id: string,
         name: string,
         email: string,
         profileImageUrl: string,
     ) => {
-        const userData = {
+        const user = {
             id: id,
             name: name,
             email: email,
@@ -21,10 +22,10 @@ const GoogleLoginButton = () => {
             isLoggedIn: true,
         };
 
-        dispatch(login(userData));
+        dispatch(login({ user, accessToken }));
     };
 
-    const handleSuccess = async (response: any) => {
+    const handleSuccess = async (response: { credential: string }) => {
         console.log('Login Success:', response);
         const idToken = response.credential; // Google에서 받은 ID Token
 
@@ -38,12 +39,18 @@ const GoogleLoginButton = () => {
                     idToken,
                 },
             );
+            console.log('Login Response:', res.data);
 
             handleLogin(
+                res.data.accessToken,
                 res.data.googleAuth.id,
                 res.data.googleAuth.name,
                 res.data.googleAuth.email,
                 res.data.googleAuth.profileImageUrl,
+            );
+            console.log(
+                'Access Token in LocalStorage: ',
+                localStorage.getItem('accessToken'),
             );
         } catch (err) {
             console.error('Login error', err);
