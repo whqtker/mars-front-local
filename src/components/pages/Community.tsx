@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import apiClient from "../apiClient";
+import apiClient from "../../api/apiClient";
 
 interface Post {
   id: number;

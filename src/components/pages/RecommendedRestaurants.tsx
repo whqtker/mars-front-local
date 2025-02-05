@@ -6,20 +6,15 @@ const RecommendedRestaurants = () => {
   const { data: restaurants, isLoading, error } = useRecommendedRestaurants();
   const navigate = useNavigate();
 
-  if (isLoading) return <p>불러오는 중...</p>;
+  if (isLoading) return <p>로딩 중...</p>;
   if (error) return <p className="text-red-500">{error.message}</p>;
 
   return (
     <div className="container mx-auto px-4 py-8">
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-          오늘은 이런 맛집 어때요?
-        </h1>
-        <p className="text-gray-600">
-          회원님의 취향을 반영한 맛집을 추천해드려요
-        </p>
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">추천 맛집</h1>
+        <p className="text-gray-600">평점순으로 정렬된 추천 맛집 목록입니다.</p>
       </div>
-
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {restaurants?.map((restaurant) => (
           <div
@@ -28,7 +23,7 @@ const RecommendedRestaurants = () => {
             className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
           >
             <img
-              src={restaurant.imageUrl}
+              src={restaurant.image}
               alt={restaurant.name}
               className="w-full h-48 object-cover"
             />
@@ -37,10 +32,12 @@ const RecommendedRestaurants = () => {
               <p className="text-gray-600 mb-2">{restaurant.address}</p>
               <div className="flex items-center mb-2">
                 <Star className="text-orange-500" size={16} />
-                <span className="ml-1 text-sm">{restaurant.rating}</span>
+                <span className="ml-1 text-sm">
+                  {restaurant.rating.toFixed(1)}
+                </span>
               </div>
               <p className="text-sm text-gray-500 italic">
-                리뷰({restaurant.reviewCount}개)
+                리뷰({restaurant.reviews}개)
               </p>
             </div>
           </div>

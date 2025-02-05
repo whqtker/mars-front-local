@@ -2,36 +2,36 @@ import apiClient from "../apiClient";
 import type { ApiResponse, LoginRequest, RegisterRequest } from "../../types";
 
 export const authService = {
-  async login(
-    data: LoginRequest
+  // 카카오 로그인
+  async kakaoLogin(
+    code: string
   ): Promise<ApiResponse<{ accessToken: string }>> {
-    const response = await apiClient.post("/auth/login", data);
+    const response = await apiClient.get(
+      `/api/auth/kakao/callback?code=${code}`
+    );
     if (response.data.accessToken) {
       localStorage.setItem("accessToken", response.data.accessToken);
     }
-    return {
-      status: response.status,
-      message: response.statusText || "Login successful",
-      data: response.data,
-    };
+    return response.data;
   },
 
-  async register(data: RegisterRequest): Promise<ApiResponse<void>> {
-    const response = await apiClient.post("/auth/register", data);
-    return {
-      status: response.status,
-      message: response.statusText || "Registration successful",
-      data: response.data,
-    };
+  // 구글 로그인
+  async googleLogin(
+    code: string
+  ): Promise<ApiResponse<{ accessToken: string }>> {
+    const response = await apiClient.get(
+      `/api/auth/google/callback?code=${code}`
+    );
+    if (response.data.accessToken) {
+      localStorage.setItem("accessToken", response.data.accessToken);
+    }
+    return response.data;
   },
 
+  // 로그아웃
   async logout(): Promise<ApiResponse<void>> {
-    const response = await apiClient.post("/auth/logout");
+    const response = await apiClient.post("/api/auth/logout");
     localStorage.removeItem("accessToken");
-    return {
-      status: response.status,
-      message: response.statusText || "Logout successful",
-      data: response.data,
-    };
+    return response.data;
   },
 };

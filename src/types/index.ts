@@ -75,3 +75,10 @@ export interface Place {
     lng: number;
   };
 }
+
+export interface Reviewer {
+  rank: number;
+  name: string;
+  score: number;
+  image: string;
+}

@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { useRestaurantDetail } from "../../api/services/restaurantService";
-import type { RestaurantDetail } from "../../types";
 
 export default function RestaurantDetailPage() {
   const { restaurant_id } = useParams();
@@ -10,15 +9,15 @@ export default function RestaurantDetailPage() {
     error,
   } = useRestaurantDetail(Number(restaurant_id));
 
-  if (isLoading) return <div>불러오는 중...</div>;
-  if (error) return <div>{error.message}</div>;
+  if (isLoading) return <div>로딩 중...</div>;
+  if (error) return <div className="text-red-500">{error.message}</div>;
   if (!restaurant) return <div>식당 정보를 찾을 수 없습니다.</div>;
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-4">{restaurant.name}</h1>
       <img
-        src={restaurant.imageUrl}
+        src={restaurant.image}
         alt={restaurant.name}
         className="w-full h-64 object-cover mb-4 rounded-lg shadow-md"
       />

@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import { getPopularReviewers } from "../../api/apiClient";
 
-export interface Reviewer {
-  rank: number;
-  name: string;
-  score: number;
-  image: string;
-}
-
 const PopularReviewers = () => {
   const [topReviewers, setTopReviewers] = useState<Reviewer[]>([]);
   const [otherReviewers, setOtherReviewers] = useState<Reviewer[]>([]);

@@ -1,6 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Search, Heart, TrendingUp, X } from "lucide-react";
-import { restaurantService } from "../../api/services/restaurantService";
+import {
+  useRestaurantSearch,
+  useFavoriteRestaurants,
+  useRecommendedRestaurants,
+} from "../../api/services/restaurantService";
 import type { Restaurant } from "../../types";
 import { useNavigate } from "react-router-dom";
 import RestaurantDetail from "../../components/pages/RestaurantDetail";
@@ -13,23 +17,26 @@ const Sidebar = () => {
   );
   const [selectedRestaurant, setSelectedRestaurant] =
     useState<Restaurant | null>(null);
-  const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
-  const [favoriteRestaurants, setFavoriteRestaurants] = useState<Restaurant[]>(
-    []
-  );
+  const [searchQuery, setSearchQuery] = useState("");
 
-  useEffect(() => {
-    const fetchRestaurants = async () => {
-      try {
-        const response = await restaurantService.getRecommended();
-        setRestaurants(response.data);
-      } catch (err) {
-        console.error("식당 데이터를 가져오는 데 실패했습니다.", err);
-      }
-    };
+  // 각 모드별 백엔드 API 호출
+  const { data: searchResults } = useRestaurantSearch(searchQuery);
+  const { data: favoriteRestaurants } = useFavoriteRestaurants();
+  const { data: trendingRestaurants } = useRecommendedRestaurants();
 
-    fetchRestaurants();
-  }, []);
+  const getRestaurantsToDisplay = () => {
+    if (listType === "search") {
+      return searchQuery ? searchResults : [];
+    } else if (listType === "favorites") {
+      return favoriteRestaurants || [];
+    } else if (listType === "trending") {
+      return trendingRestaurants || [];
+    } else {
+      return [];
+    }
+  };
+
+  const restaurants = getRestaurantsToDisplay();
 
   const RestaurantCard = ({ restaurant }: { restaurant: Restaurant }) => (
     <div
@@ -37,7 +44,7 @@ const Sidebar = () => {
       className="flex items-center p-4 border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
     >
       <img
-        src={restaurant.imageUrl}
+        src={restaurant.image}
         alt={restaurant.name}
         className="w-24 h-24 rounded-lg object-cover mr-4"
       />
@@ -140,6 +147,8 @@ const Sidebar = () => {
                       <input
                         type="text"
                         placeholder="동네 맛집 검색"
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                         className="w-full pl-10 pr-4 py-3 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:bg-white transition-all"
                       />
                       <Search
@@ -149,7 +158,7 @@ const Sidebar = () => {
                     </div>
                   </div>
                   <div className="divide-y divide-gray-100">
-                    {restaurants.map((restaurant) => (
+                    {restaurants?.map((restaurant) => (
                       <RestaurantCard
                         key={restaurant.id}
                         restaurant={restaurant}
@@ -161,7 +170,7 @@ const Sidebar = () => {
 
               {listType === "favorites" && (
                 <div className="divide-y divide-gray-100">
-                  {restaurants.map((restaurant) => (
+                  {restaurants?.map((restaurant) => (
                     <RestaurantCard
                       key={restaurant.id}
                       restaurant={restaurant}
@@ -171,29 +180,13 @@ const Sidebar = () => {
               )}
 
               {listType === "trending" && (
-                <div className="p-4">
-                  <div className="bg-gray-50 rounded-lg p-4 mb-4">
-                    <div className="flex flex-wrap gap-2">
-                      {["맛집", "카페", "디저트", "파스타", "한식", "일식"].map(
-                        (keyword) => (
-                          <div
-                            key={keyword}
-                            className="px-3 py-1.5 bg-white rounded-full text-sm text-gray-700 border border-gray-200 hover:border-orange-500 cursor-pointer"
-                          >
-                            #{keyword}
-                          </div>
-                        )
-                      )}
-                    </div>
-                  </div>
-                  <div className="divide-y divide-gray-100">
-                    {restaurants.map((restaurant) => (
-                      <RestaurantCard
-                        key={restaurant.id}
-                        restaurant={restaurant}
-                      />
-                    ))}
-                  </div>
+                <div className="divide-y divide-gray-100">
+                  {restaurants?.map((restaurant) => (
+                    <RestaurantCard
+                      key={restaurant.id}
+                      restaurant={restaurant}
+                    />
+                  ))}
                 </div>
               )}
             </div>
