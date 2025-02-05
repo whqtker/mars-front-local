@@ -1,4 +1,4 @@
-import { apiClient } from "../apiClient";
+import apiClient from "../apiClient";
 import type { ApiResponse, LoginRequest, RegisterRequest } from "../../types";
 
 export const authService = {

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { getPosts } from "../../api/apiClient";
+import { useState, useEffect } from "react";
+import apiClient from "../apiClient";
 
 interface Post {
   id: number;

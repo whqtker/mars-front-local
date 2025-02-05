@@ -1,12 +1,10 @@
 import { useRecommendedRestaurants } from "../../api/services/restaurantService";
 import { Star } from "lucide-react";
-import type { Restaurant, EnhancedRestaurant } from "../../types";
-import RestaurantDetail from "./RestaurantDetail";
+import { useNavigate } from "react-router-dom";
 
 const RecommendedRestaurants = () => {
   const { data: restaurants, isLoading, error } = useRecommendedRestaurants();
-  const [selectedRestaurant, setSelectedRestaurant] =
-    useState<EnhancedRestaurant | null>(null);
+  const navigate = useNavigate();
 
   if (isLoading) return <p>불러오는 중...</p>;
   if (error) return <p className="text-red-500">{error.message}</p>;
@@ -26,9 +24,7 @@ const RecommendedRestaurants = () => {
         {restaurants?.map((restaurant) => (
           <div
             key={restaurant.id}
-            onClick={() =>
-              setSelectedRestaurant(restaurant as EnhancedRestaurant)
-            }
+            onClick={() => navigate(`/restaurant/${restaurant.id}`)}
             className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow cursor-pointer"
           >
             <img
@@ -50,15 +46,6 @@ const RecommendedRestaurants = () => {
           </div>
         ))}
       </div>
-
-      {selectedRestaurant && (
-        <div className="fixed right-0 top-[73px] h-[calc(100vh-73px)]">
-          <RestaurantDetail
-            restaurant={selectedRestaurant}
-            onClose={() => setSelectedRestaurant(null)}
-          />
-        </div>
-      )}
     </div>
   );
 };

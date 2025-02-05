@@ -1,5 +1,5 @@
 // src/hooks/useRestaurants.ts
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react-query";
 import { restaurantService } from "../api/services/restaurantService";
 import type { Restaurant } from "../types";
 

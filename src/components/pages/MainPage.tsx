@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Sidebar from "../layout/Sidebar";
 import MapArea from "../map/MapArea";
-import RestaurantDetail from "../restaurant/RestaurantDetail";
+import RestaurantDetail from "../pages/RestaurantDetail";
 import RecommendedRestaurants from "./RecommendedRestaurants";
 
 const MainPage = () => {

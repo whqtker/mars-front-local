@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { Search, Heart, TrendingUp, X } from "lucide-react";
 import { restaurantService } from "../../api/services/restaurantService";
 import type { Restaurant } from "../../types";
-import RestaurantDetail from "../restaurant/RestaurantDetail";
+import { useNavigate } from "react-router-dom";
+import RestaurantDetail from "../../components/pages/RestaurantDetail";
 
 const Sidebar = () => {
+  const navigate = useNavigate();
   const [showList, setShowList] = useState(false);
   const [listType, setListType] = useState<"search" | "favorites" | "trending">(
     "search"
@@ -12,6 +14,9 @@ const Sidebar = () => {
   const [selectedRestaurant, setSelectedRestaurant] =
     useState<Restaurant | null>(null);
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
+  const [favoriteRestaurants, setFavoriteRestaurants] = useState<Restaurant[]>(
+    []
+  );
 
   useEffect(() => {
     const fetchRestaurants = async () => {
@@ -28,11 +33,11 @@ const Sidebar = () => {
 
   const RestaurantCard = ({ restaurant }: { restaurant: Restaurant }) => (
     <div
-      onClick={() => setSelectedRestaurant(restaurant)}
+      onClick={() => navigate(`/restaurant/${restaurant.id}`)}
       className="flex items-center p-4 border-b border-gray-100 hover:bg-gray-50 cursor-pointer"
     >
       <img
-        src={restaurant.image}
+        src={restaurant.imageUrl}
         alt={restaurant.name}
         className="w-24 h-24 rounded-lg object-cover mr-4"
       />
@@ -44,7 +49,7 @@ const Sidebar = () => {
             ⭐ {restaurant.rating.toFixed(1)}
           </span>
           <span className="text-gray-300">•</span>
-          <span className="text-gray-500">리뷰 {restaurant.reviews}</span>
+          <span className="text-gray-500">리뷰 {restaurant.reviewCount}</span>
           <span className="text-gray-300">•</span>
           <span className="text-orange-500 font-medium">
             {restaurant.price}
@@ -156,7 +161,7 @@ const Sidebar = () => {
 
               {listType === "favorites" && (
                 <div className="divide-y divide-gray-100">
-                  {favoriteRestaurants.map((restaurant) => (
+                  {restaurants.map((restaurant) => (
                     <RestaurantCard
                       key={restaurant.id}
                       restaurant={restaurant}

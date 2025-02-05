@@ -1,4 +1,4 @@
-import { apiClient } from "../apiClient";
+import apiClient from "../apiClient";
 import type { ApiResponse } from "../types";
 import type { MenuItem } from "../types";
 

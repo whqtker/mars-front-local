@@ -1,64 +1,44 @@
-import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { restaurantService } from "../../api/services/restaurantService";
+import { useRestaurantDetail } from "../../api/services/restaurantService";
 import type { RestaurantDetail } from "../../types";
 
 export default function RestaurantDetailPage() {
   const { restaurant_id } = useParams();
-  const [restaurant, setRestaurant] = useState<RestaurantDetail | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
+  const {
+    data: restaurant,
+    isLoading,
+    error,
+  } = useRestaurantDetail(Number(restaurant_id));
 
-  useEffect(() => {
-    async function fetchRestaurant() {
-      try {
-        const response = await restaurantService.getById(Number(restaurant_id));
-        console.log(response); // 응답 확인
-        if (response.data) {
-          setRestaurant(response.data);
-        } else {
-          setError("API에서 식당 정보를 받아오지 못했습니다.");
-        }
-      } catch (err) {
-        console.error("Error fetching restaurant data:", err); // 오류 출력
-        setError("식당 정보를 가져오는 도중 오류가 발생했습니다.");
-      } finally {
-        setLoading(false);
-      }
-    }
-
-    if (restaurant_id) {
-      fetchRestaurant();
-    }
-  }, [restaurant_id]);
-
-  if (loading) {
-    return <div>불러오는 중...</div>;
-  }
-
-  if (error) {
-    return <div>{error}</div>;
-  }
-
-  if (!restaurant) {
-    return <div>식당 정보를 찾을 수 없습니다.</div>;
-  }
+  if (isLoading) return <div>불러오는 중...</div>;
+  if (error) return <div>{error.message}</div>;
+  if (!restaurant) return <div>식당 정보를 찾을 수 없습니다.</div>;
 
   return (
-    <div>
-      <h1>{restaurant.name}</h1>
-      <p>{restaurant.description}</p>
-      <p>주소: {restaurant.address}</p>
-      <p>전화번호: {restaurant.phone}</p>
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4">{restaurant.name}</h1>
+      <img
+        src={restaurant.imageUrl}
+        alt={restaurant.name}
+        className="w-full h-64 object-cover mb-4 rounded-lg shadow-md"
+      />
+      <p className="mb-2 text-gray-700">{restaurant.description}</p>
+      <p className="mb-2">
+        <strong>주소:</strong> {restaurant.address}
+      </p>
+      <p className="mb-2">
+        <strong>전화번호:</strong> {restaurant.phone}
+      </p>
       {restaurant.businessHours && (
-        <div>
+        <div className="mb-2">
           <p>
-            영업시간: {restaurant.businessHours.open} -{" "}
+            <strong>영업시간:</strong> {restaurant.businessHours.open} ~{" "}
             {restaurant.businessHours.close}
           </p>
           {restaurant.businessHours.breakTime && (
             <p>
-              휴식시간: {restaurant.businessHours.breakTime.start} -{" "}
+              <strong>휴식시간:</strong>{" "}
+              {restaurant.businessHours.breakTime.start} ~{" "}
               {restaurant.businessHours.breakTime.end}
             </p>
           )}
@@ -66,8 +46,8 @@ export default function RestaurantDetailPage() {
       )}
       {restaurant.menu && restaurant.menu.length > 0 && (
         <div>
-          <h2>메뉴</h2>
-          <ul>
+          <h2 className="text-2xl font-semibold mb-2">메뉴</h2>
+          <ul className="list-disc pl-5">
             {restaurant.menu.map((menu) => (
               <li key={menu.id}>
                 {menu.name} - {menu.price}원

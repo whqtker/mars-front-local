@@ -1,5 +1,5 @@
 import { useQuery, useMutation } from "react-query";
-import { apiClient } from "../apiClient";
+import apiClient from "../apiClient";
 import type { Restaurant, RestaurantDetail, Review } from "../../types";
 
 export const useRecommendedRestaurants = () => {
@@ -96,4 +96,9 @@ export const useUpdateReview = () => {
       return response.data.data;
     }
   );
+};
+
+export const getById = async (id: number) => {
+  const response = await apiClient.get(`/api/v1/restaurant/${id}`);
+  return response.data;
 };
