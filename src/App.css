@@ -1,0 +1,88 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.25rem;
+  font-weight: medium;
+}
+
+.text-orange-500 {
+  color: #f97316; /* 메인 색상 */
+}
+
+.bg-white {
+  background-color: #ffffff; /* 배경색 */
+}
+
+.shadow-md {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+}
+
+.hover\:shadow-lg:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 효과 */
+}
+
+.rounded-lg {
+  border-radius: 0.5rem; /* 모서리 둥글게 */
+}
+
+.p-4 {
+  padding: 1rem; /* 패딩 */
+}
+
+.mb-4 {
+  margin-bottom: 1rem; /* 아래 여백 */
+}
+
+.text-gray-600 {
+  color: #4b5563; /* 서브 색상 1 */
+}
+
+.text-gray-500 {
+  color: #6b7280; /* 서브 색상 2 */
+}
+
+.border {
+  border: 1px solid #e5e7eb; /* 경계선 색상 */
+}
+
+.focus\:ring-2:focus {
+  ring-width: 2px; /* 포커스 시 링 두께 */
+}
+
+.fixed {
+  position: fixed;
+}
+
+.bottom-4 {
+  bottom: 1rem; /* 하단 여백 */
+}
+
+.right-4 {
+  right: 1rem; /* 우측 여백 */
+}
+
+.bg-orange-500 {
+  background-color: #f97316; /* 버튼 배경색 */
+}
+
+.hover\:bg-orange-600:hover {
+  background-color: #ea580c; /* 버튼 호버 색상 */
+}
+
+.transition-colors {
+  transition: background-color 0.3s ease; /* 색상 전환 효과 */
+}

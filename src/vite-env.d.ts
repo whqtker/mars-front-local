@@ -1,21 +1,10 @@
 /// <reference types="vite/client" />
 
-declare module "*.css" {
-  const content: { [className: string]: string };
-  export default content;
+interface ImportMetaEnv {
+  readonly VITE_API_URL: string;
+  // 추가 환경변수가 있다면 여기에 선언
 }
 
-declare module "*.png" {
-  const value: string;
-  export default value;
-}
-
-declare module "*.jpg" {
-  const value: string;
-  export default value;
-}
-
-declare module "*.svg" {
-  const value: string;
-  export default value;
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }
