@@ -14,13 +14,6 @@ import {
     RecommendedRestaurantsPage,
     AuthNaverCallback,
 } from './components/pages';
-  MainPage,
-  CommunityPage,
-  PopularReviewersPage,
-  RecommendedRestaurantsPage,
-  RestaurantDetailPage,
-  AuthNaverCallback,
-} from "./components/pages";
 
 function App() {
     return (
