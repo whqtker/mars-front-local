@@ -5,6 +5,7 @@ import MapArea from "./components/map/MapArea";
 import Community from "./components/pages/Community";
 import PopularReviewers from "./components/pages/PopularReviewers";
 import RecommendedRestaurants from "./components/pages/RecommendedRestaurants";
+import RestaurantDetailPage from "./components/pages/RestaurantDetailPage";
 import MainPage from "./components/pages/MainPage";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path="/recommendations" element={<RecommendedRestaurants />} />
+          <Route path="/restaurant/:id" element={<RestaurantDetailPage />} />
           <Route
             path="/map"
             element={
