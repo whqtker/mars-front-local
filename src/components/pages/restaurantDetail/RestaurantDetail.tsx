@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Star, MapPin, Phone, Clock, X, Search } from 'lucide-react';
-import type { RestaurantDetail } from '../../api/types';
-import { restaurantService } from '../../api/services/restaurantService';
+import type { RestaurantDetail } from '../../../api/types';
+import { restaurantService } from '../../../api/services/restaurantService';
 
 interface RestaurantDetailProps {
     restaurant: RestaurantDetail;

@@ -2,13 +2,18 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/layout/Header';
 import Sidebar from './components/layout/Sidebar';
 import MapArea from './components/map/MapArea';
-import Community from './components/pages/Community';
-import PopularReviewers from './components/pages/PopularReviewers';
-import RecommendedRestaurants from './components/pages/RecommendedRestaurants';
-import MainPage from './components/pages/MainPage';
 import { store } from './utils/store/Store';
 import { Provider } from 'react-redux';
 import React from 'react';
+
+import {
+    MainPage,
+    CommunityPage,
+    PopularReviewersPage,
+    RecommendedRestaurantsPage,
+    RestaurantDetailPage,
+    AuthNaverCallback,
+} from './components/pages';
 
 function App() {
     return (
@@ -21,7 +26,7 @@ function App() {
                             <Route path="/" element={<MainPage />} />
                             <Route
                                 path="/recommendations"
-                                element={<RecommendedRestaurants />}
+                                element={<RecommendedRestaurantsPage />}
                             />
                             <Route
                                 path="/map"
@@ -32,10 +37,17 @@ function App() {
                                     </div>
                                 }
                             />
-                            <Route path="/community" element={<Community />} />
+                            <Route
+                                path="/community"
+                                element={<CommunityPage />}
+                            />
                             <Route
                                 path="/reviewers"
-                                element={<PopularReviewers />}
+                                element={<PopularReviewersPage />}
+                            />
+                            <Route
+                                path="/auth/naver/callback"
+                                element={<AuthNaverCallback />}
                             />
                         </Routes>
                     </div>

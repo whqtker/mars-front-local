@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 // import { getPopularReviewers } from "../../api/apiClient";
 
-const PopularReviewers = () => {
+const PopularReviewersPage = () => {
     // const [topReviewers, setTopReviewers] = useState<Reviewer[]>([]);
     // const [otherReviewers, setOtherReviewers] = useState<Reviewer[]>([]);
     // const [loading, setLoading] = useState<boolean>(true);
@@ -130,4 +130,4 @@ const PopularReviewers = () => {
     );
 };
 
-export default PopularReviewers;
+export default PopularReviewersPage;

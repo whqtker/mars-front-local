@@ -1,8 +1,8 @@
-import { useRecommendedRestaurants } from '../../api/services/restaurantService';
+import { useRecommendedRestaurants } from '../../../api/services/restaurantService';
 import { Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const RecommendedRestaurants = () => {
+const RecommendedRestaurantsPage = () => {
     // const { data: restaurants, isLoading, error } = useRecommendedRestaurants();
     const navigate = useNavigate();
 
@@ -82,4 +82,4 @@ const RecommendedRestaurants = () => {
     );
 };
 
-export default RecommendedRestaurants;
+export default RecommendedRestaurantsPage;

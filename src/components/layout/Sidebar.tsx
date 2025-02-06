@@ -7,7 +7,7 @@ import {
 } from '../../api/services/restaurantService';
 import type { Restaurant } from '../../api/types';
 import { useNavigate } from 'react-router-dom';
-import RestaurantDetail from '../../components/pages/RestaurantDetail';
+import RestaurantDetail from '../pages/restaurantDetail/RestaurantDetail';
 
 const Sidebar = () => {
     const navigate = useNavigate();

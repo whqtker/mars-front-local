@@ -1,5 +1,5 @@
 import { X } from 'lucide-react';
-import { AuthGoogle } from '../../api';
+import { AuthGoogle, AuthNaver } from '../../api';
 import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../utils/store/Store';
@@ -41,7 +41,10 @@ const LoginModal = ({ isOpen, onClose }: LoginModalProps) => {
                     </div>
 
                     <div className="space-y-4">
-                        <button className="w-full py-3 px-4 rounded-md bg-[#FEE500] text-black font-medium flex items-center justify-center space-x-2 hover:bg-[#FDD800] transition-colors">
+                        <button
+                            onClick={AuthNaver()}
+                            className="w-full py-3 px-4 rounded-md bg-[#FEE500] text-black font-medium flex items-center justify-center space-x-2 hover:bg-[#FDD800] transition-colors"
+                        >
                             <svg
                                 width="24"
                                 height="24"
