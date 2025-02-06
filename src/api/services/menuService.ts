@@ -1,31 +1,47 @@
+import { useQuery } from "react-query";
 import apiClient from "../apiClient";
-import type { ApiResponse } from "../types";
-import type { MenuItem } from "../types";
+import type { Menu, ApiResponse } from "../types";
+
+export const useRestaurantMenu = (restaurantId: number) => {
+  return useQuery<Menu[], Error>(
+    ["restaurantMenu", restaurantId],
+    async () => {
+      const response = await apiClient.get<ApiResponse<Menu[]>>(
+        `/api/v1/restaurant/${restaurantId}/menu`
+      );
+      return response.data.data;
+    },
+    {
+      enabled: !!restaurantId,
+    }
+  );
+};
 
 export const menuService = {
-  // 식당 메뉴 조회: GET /api/v1/restaurant/{restaurant_id}/menu
-  async getMenu(restaurantId: number): Promise<ApiResponse<MenuItem[]>> {
-    return apiClient.get(`/api/v1/restaurant/${restaurantId}/menu`);
+  async getMenu(restaurantId: number): Promise<Menu[]> {
+    const response = await apiClient.get<ApiResponse<Menu[]>>(
+      `/api/v1/restaurant/${restaurantId}/menu`
+    );
+    return response.data.data;
   },
 
-  // 식당 메뉴 등록: POST /api/v1/restaurant/{restaurant_id}/menu
-  async createMenu(
-    restaurantId: number,
-    data: MenuItem
-  ): Promise<ApiResponse<MenuItem>> {
-    return apiClient.post(`/api/v1/restaurant/${restaurantId}/menu`, data);
+  async createMenu(restaurantId: number, data: Menu): Promise<Menu> {
+    const response = await apiClient.post<ApiResponse<Menu>>(
+      `/api/v1/restaurant/${restaurantId}/menu`,
+      data
+    );
+    return response.data.data;
   },
 
-  // 메뉴 삭제: DELETE /api/v1/menu/{menu_id}
-  async deleteMenu(menuId: number): Promise<ApiResponse<void>> {
-    return apiClient.delete(`/api/v1/menu/${menuId}`);
+  async updateMenu(menuId: number, data: Partial<Menu>): Promise<Menu> {
+    const response = await apiClient.patch<ApiResponse<Menu>>(
+      `/api/v1/menu/${menuId}`,
+      data
+    );
+    return response.data.data;
   },
 
-  // 메뉴 수정: PATCH /api/v1/menu/{menu_id}
-  async updateMenu(
-    menuId: number,
-    data: Partial<MenuItem>
-  ): Promise<ApiResponse<MenuItem>> {
-    return apiClient.patch(`/api/v1/menu/${menuId}`, data);
+  async deleteMenu(menuId: number): Promise<void> {
+    await apiClient.delete(`/api/v1/menu/${menuId}`);
   },
 };
