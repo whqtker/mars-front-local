@@ -1,7 +1,7 @@
 // src/hooks/useRestaurants.ts
 import { useState, useEffect } from "react";
 import { restaurantService } from "../api/services/restaurantService";
-import type { Restaurant } from "../types";
+import type { Restaurant } from "../api/types";
 
 export const useRestaurants = () => {
   const [restaurants, setRestaurants] = useState<Restaurant[]>([]);
@@ -12,7 +12,7 @@ export const useRestaurants = () => {
     try {
       setLoading(true);
       const response = await restaurantService.getRecommended();
-      setRestaurants(response.data);
+      setRestaurants(response);
     } catch (err) {
       setError("맛집 정보를 불러오는데 실패했습니다.");
     } finally {

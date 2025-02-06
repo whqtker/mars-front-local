@@ -1,3 +1,4 @@
+/*
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authService } from "../api/services/authService";
@@ -38,3 +39,4 @@ export const useAuth = () => {
 
   return { loading, error, login, register };
 };
+*/
