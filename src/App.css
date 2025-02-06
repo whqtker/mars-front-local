@@ -1,3 +1,4 @@
+/* 
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -20,69 +21,84 @@ h3 {
 }
 
 .text-orange-500 {
-  color: #f97316; /* 메인 색상 */
+  color: #f97316;
 }
 
 .bg-white {
-  background-color: #ffffff; /* 배경색 */
+  background-color: #ffffff; 
 }
 
 .shadow-md {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .hover\:shadow-lg:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 호버 시 그림자 효과 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .rounded-lg {
-  border-radius: 0.5rem; /* 모서리 둥글게 */
+  border-radius: 0.5rem; 
 }
-
 .p-4 {
-  padding: 1rem; /* 패딩 */
+    padding: 1rem; 
 }
 
 .mb-4 {
-  margin-bottom: 1rem; /* 아래 여백 */
+    margin-bottom: 1rem;
 }
 
 .text-gray-600 {
-  color: #4b5563; /* 서브 색상 1 */
+    color: #4b5563;  
 }
 
 .text-gray-500 {
-  color: #6b7280; /* 서브 색상 2 */
+    color: #6b7280;  
 }
 
 .border {
-  border: 1px solid #e5e7eb; /* 경계선 색상 */
+    border: 1px solid #e5e7eb; 
 }
 
 .focus\:ring-2:focus {
-  ring-width: 2px; /* 포커스 시 링 두께 */
+    ring-width: 2px; 
 }
 
 .fixed {
-  position: fixed;
+    position: fixed;
 }
 
 .bottom-4 {
-  bottom: 1rem; /* 하단 여백 */
+    bottom: 1rem;
 }
 
 .right-4 {
-  right: 1rem; /* 우측 여백 */
+    right: 1rem;
 }
 
 .bg-orange-500 {
-  background-color: #f97316; /* 버튼 배경색 */
+    background-color: #f97316; 
 }
 
 .hover\:bg-orange-600:hover {
-  background-color: #ea580c; /* 버튼 호버 색상 */
+    background-color: #ea580c; 
 }
 
 .transition-colors {
-  transition: background-color 0.3s ease; /* 색상 전환 효과 */
+    transition: background-color 0.3s ease; 
+}
+*/
+@import 'tailwindcss';
+
+html,
+body,
+:root {
+    height: 100%;
+
+    width: 100%;
+}
+
+.custom-app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }

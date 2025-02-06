@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
 import Header from './components/layout/Header';
 import Sidebar from './components/layout/Sidebar';
 import MapArea from './components/map/MapArea';
@@ -11,7 +12,6 @@ import {
     CommunityPage,
     PopularReviewersPage,
     RecommendedRestaurantsPage,
-    RestaurantDetailPage,
     AuthNaverCallback,
 } from './components/pages';
 
@@ -20,36 +20,40 @@ function App() {
         <React.StrictMode>
             <Provider store={store}>
                 <Router>
-                    <div className="min-h-screen bg-gray-100">
-                        <Header />
-                        <Routes>
-                            <Route path="/" element={<MainPage />} />
-                            <Route
-                                path="/recommendations"
-                                element={<RecommendedRestaurantsPage />}
-                            />
-                            <Route
-                                path="/map"
-                                element={
-                                    <div className="relative flex">
-                                        <Sidebar />
-                                        <MapArea />
-                                    </div>
-                                }
-                            />
-                            <Route
-                                path="/community"
-                                element={<CommunityPage />}
-                            />
-                            <Route
-                                path="/reviewers"
-                                element={<PopularReviewersPage />}
-                            />
-                            <Route
-                                path="/auth/naver/callback"
-                                element={<AuthNaverCallback />}
-                            />
-                        </Routes>
+                    <div className="custom-app-container bg-gray-100">
+                        <div className="nav">
+                            <Header />
+                        </div>
+                        <div className="h-full">
+                            <Routes>
+                                <Route path="/" element={<MainPage />} />
+                                <Route
+                                    path="/recommendations"
+                                    element={<RecommendedRestaurantsPage />}
+                                />
+                                <Route
+                                    path="/map"
+                                    element={
+                                        <div className="flex h-full">
+                                            <Sidebar />
+                                            <MapArea />
+                                        </div>
+                                    }
+                                />
+                                <Route
+                                    path="/community"
+                                    element={<CommunityPage />}
+                                />
+                                <Route
+                                    path="/reviewers"
+                                    element={<PopularReviewersPage />}
+                                />
+                                <Route
+                                    path="/auth/naver/callback"
+                                    element={<AuthNaverCallback />}
+                                />
+                            </Routes>
+                        </div>
                     </div>
                 </Router>
             </Provider>

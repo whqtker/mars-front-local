@@ -25,60 +25,66 @@ const Header = () => {
 
     return (
         <>
-            <header className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-50 mb-4 shadow-sm">
-                <div className="flex items-center space-x-8">
-                    <Link to="/map" className="flex items-center space-x-3">
-                        <img src="/logo.png" alt="ComMars" className="h-10" />
-                        <span className="font-bold text-xl text-orange-500">
-                            ComMars
-                        </span>
-                    </Link>
+            <div className="">
+                <header className="bg-white border-b border-gray-200 px-6 py-3 flex items-center justify-between sticky top-0 z-50 shadow-sm mb-4">
+                    <div className="flex items-center space-x-8">
+                        <Link to="/map" className="flex items-center space-x-3">
+                            <img
+                                src="/logo.png"
+                                alt="ComMars"
+                                className="h-10"
+                            />
+                            <span className="font-bold text-xl text-orange-500">
+                                ComMars
+                            </span>
+                        </Link>
 
-                    {/* Navigation */}
-                    <nav className="flex items-center space-x-6">
-                        <Link
-                            to="/recommendations"
-                            className="text-gray-700 hover:text-orange-500 font-medium"
-                        >
-                            오늘 뭐 먹지?
-                        </Link>
-                        <Link
-                            to="/community"
-                            className="text-gray-700 hover:text-orange-500 font-medium"
-                        >
-                            커뮤니티
-                        </Link>
-                        <Link
-                            to="/reviewers"
-                            className="text-gray-700 hover:text-orange-500 font-medium"
-                        >
-                            인기 리뷰어
-                        </Link>
-                    </nav>
-                </div>
+                        {/* Navigation */}
+                        <nav className="flex items-center space-x-6">
+                            <Link
+                                to="/recommendations"
+                                className="text-gray-700 hover:text-orange-500 font-medium"
+                            >
+                                오늘 뭐 먹지?
+                            </Link>
+                            <Link
+                                to="/community"
+                                className="text-gray-700 hover:text-orange-500 font-medium"
+                            >
+                                커뮤니티
+                            </Link>
+                            <Link
+                                to="/reviewers"
+                                className="text-gray-700 hover:text-orange-500 font-medium"
+                            >
+                                인기 리뷰어
+                            </Link>
+                        </nav>
+                    </div>
 
-                {user.isLoggedIn ? (
-                    <div className="flex items-center space-x-4">
-                        <span className="text-gray-600 text-sm">
-                            {formatUserName(user.name)}
-                        </span>
+                    {user.isLoggedIn ? (
+                        <div className="flex items-center space-x-4">
+                            <span className="text-gray-600 text-sm">
+                                {formatUserName(user.name)}
+                            </span>
+                            <button
+                                onClick={handleLogout}
+                                className="flex items-center space-x-2 px-4 py-2 rounded-md border border-orange-500 text-orange-500 hover:bg-orange-50 font-medium transition-colors"
+                            >
+                                로그아웃
+                            </button>
+                        </div>
+                    ) : (
                         <button
-                            onClick={handleLogout}
+                            onClick={() => setShowLoginModal(true)}
                             className="flex items-center space-x-2 px-4 py-2 rounded-md border border-orange-500 text-orange-500 hover:bg-orange-50 font-medium transition-colors"
                         >
-                            로그아웃
+                            <LogIn size={20} />
+                            <span>로그인</span>
                         </button>
-                    </div>
-                ) : (
-                    <button
-                        onClick={() => setShowLoginModal(true)}
-                        className="flex items-center space-x-2 px-4 py-2 rounded-md border border-orange-500 text-orange-500 hover:bg-orange-50 font-medium transition-colors"
-                    >
-                        <LogIn size={20} />
-                        <span>로그인</span>
-                    </button>
-                )}
-            </header>
+                    )}
+                </header>
+            </div>
 
             <LoginModal
                 isOpen={showLoginModal}
