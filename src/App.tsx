@@ -6,6 +6,7 @@ import MapArea from "./components/map/MapArea";
 
 import CommunityPage from "./components/pages/community/CommunityPage";
 import WriteForm from "./components/pages/community/WriteForm";
+import PostDetail from "./components/pages/community/PostDetail";
 import { store } from "./utils/store/Store";
 import { Provider } from "react-redux";
 import React from "react";
