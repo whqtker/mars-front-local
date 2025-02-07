@@ -34,52 +34,51 @@ const Header = () => {
                         </span>
                     </Link>
 
-                        {/* Navigation */}
-                        <nav className="flex items-center space-x-6">
-                            <Link
-                                to="/recommendations"
-                                className="text-gray-700 hover:text-orange-500 font-medium"
-                            >
-                                오늘 뭐 먹지?
-                            </Link>
-                            <Link
-                                to="/community"
-                                className="text-gray-700 hover:text-orange-500 font-medium"
-                            >
-                                커뮤니티
-                            </Link>
-                            <Link
-                                to="/reviewers"
-                                className="text-gray-700 hover:text-orange-500 font-medium"
-                            >
-                                인기 리뷰어
-                            </Link>
-                        </nav>
-                    </div>
+                    {/* Navigation */}
+                    <nav className="flex items-center space-x-6">
+                        <Link
+                            to="/recommendations"
+                            className="text-gray-700 hover:text-orange-500 font-medium"
+                        >
+                            오늘 뭐 먹지?
+                        </Link>
+                        <Link
+                            to="/community"
+                            className="text-gray-700 hover:text-orange-500 font-medium"
+                        >
+                            커뮤니티
+                        </Link>
+                        <Link
+                            to="/reviewers"
+                            className="text-gray-700 hover:text-orange-500 font-medium"
+                        >
+                            인기 리뷰어
+                        </Link>
+                    </nav>
+                </div>
 
-                    {user.isLoggedIn ? (
-                        <div className="flex items-center space-x-4">
-                            <span className="text-gray-600 text-sm">
-                                {formatUserName(user.name)}
-                            </span>
-                            <button
-                                onClick={handleLogout}
-                                className="flex items-center space-x-2 px-4 py-2 rounded-md border border-orange-500 text-orange-500 hover:bg-orange-50 font-medium transition-colors"
-                            >
-                                로그아웃
-                            </button>
-                        </div>
-                    ) : (
+                {user.isLoggedIn ? (
+                    <div className="flex items-center space-x-4">
+                        <span className="text-gray-600 text-sm">
+                            {formatUserName(user.name)}
+                        </span>
                         <button
-                            onClick={() => setShowLoginModal(true)}
+                            onClick={handleLogout}
                             className="flex items-center space-x-2 px-4 py-2 rounded-md border border-orange-500 text-orange-500 hover:bg-orange-50 font-medium transition-colors"
                         >
-                            <LogIn size={20} />
-                            <span>로그인</span>
+                            로그아웃
                         </button>
-                    )}
-                </header>
-            </div>
+                    </div>
+                ) : (
+                    <button
+                        onClick={() => setShowLoginModal(true)}
+                        className="flex items-center space-x-2 px-4 py-2 rounded-md border border-orange-500 text-orange-500 hover:bg-orange-50 font-medium transition-colors"
+                    >
+                        <LogIn size={20} />
+                        <span>로그인</span>
+                    </button>
+                )}
+            </header>
 
             <LoginModal
                 isOpen={showLoginModal}
