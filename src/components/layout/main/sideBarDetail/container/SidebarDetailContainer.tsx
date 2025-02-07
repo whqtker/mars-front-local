@@ -33,7 +33,7 @@ const SidebarDetail: React.FC<SideContainerProps> = ({ selectedMenu }) => {
     };
 
     return (
-        <div className="flex flex-col w-[360px] bg-white border-r border-gray-200 rounded-lg shadow-lg h-full m-4">
+        <div className="flex flex-col w-[360px] bg-white border-r border-gray-200 rounded-lg shadow-lg h-full">
             <div className="p-4 border-b border-gray-200 flex justify-between items-center">
                 <h3 className="font-medium text-lg">
                     {selectedMenu === 'search' && '맛집 검색'}
