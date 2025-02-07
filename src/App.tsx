@@ -43,6 +43,7 @@ function App() {
                                 /> */}
                 <Route path="/community" element={<CommunityPage />} />
                 <Route path="/community/writeForm" element={<WriteForm />} />
+                <Route path="/PostDetail" element={<PostDetail />} />
                 <Route path="/reviewers" element={<PopularReviewersPage />} />
                 <Route
                   path="/auth/naver/callback"
