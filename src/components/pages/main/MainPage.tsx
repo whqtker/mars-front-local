@@ -8,14 +8,14 @@ const MainPage = () => {
     const [selectedRestaurant, setSelectedRestaurant] = useState(null);
 
     return (
-        <div className="relative flex h-[calc(100vh-73px)]">
+        <div className="flex h-full">
             <Sidebar />
             <MapArea />
             <div className="flex-1 overflow-y-auto">
                 <RecommendedRestaurants />
             </div>
             {selectedRestaurant && (
-                <div className="fixed right-0 top-[73px] h-[calc(100vh-73px)]">
+                <div className="fixed right-0 top-[73px] h-full">
                     <RestaurantDetail
                         restaurant={selectedRestaurant}
                         onClose={() => setSelectedRestaurant(null)}

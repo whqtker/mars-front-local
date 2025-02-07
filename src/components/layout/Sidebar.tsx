@@ -102,7 +102,7 @@ const Sidebar = () => {
     );
 
     return (
-        <div className="flex h-[calc(100vh-73px)]">
+        <div className="flex h-full">
             {/* Compact Sidebar */}
             <aside className="w-[80px] bg-white border-r border-gray-200 flex flex-col items-center py-4">
                 {/* Search Button */}
